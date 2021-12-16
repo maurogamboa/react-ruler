@@ -1,5 +1,3 @@
-
-
 <p align="middle" ><img src="https://raw.githubusercontent.com/daybrush/ruler/master/demo/images/ruler.png"/></p>
 <h2 align="middle">React Ruler</h2>
 <p align="middle">
@@ -24,58 +22,61 @@
     <a href="https://github.com/daybrush/scena" target="_blank"><strong>Main Project</strong></a>
 </p>
 
-
 ## ⚙️ Installation
+
 ### npm
+
 ```sh
-$ npm i @scena/react-ruler
+$ npm i @arrobots/react-ruler
 ```
 
 ## 🚀 How to use
-```tsx
 
+```tsx
 import * as React from "react";
 import Ruler from "@scena/react-ruler";
 
 export default class App extends React.Component {
-    render() {
-        return (<Ruler type="horizontal" ref={e => {
-            this.ruler = e;
-        }}/>);
-    }
-    componentDidMount() {
-        this.ruler.resize();
+  render() {
+    return (
+      <Ruler
+        type="horizontal"
+        ref={(e) => {
+          this.ruler = e;
+        }}
+      />
+    );
+  }
+  componentDidMount() {
+    this.ruler.resize();
 
-        window.addEventListener("resize", () => {
-            this.ruler.resize();
-        });
-    }
+    window.addEventListener("resize", () => {
+      this.ruler.resize();
+    });
+  }
 }
 
 export interface RulerInterface {
-    scroll(scrollPos: number): any;
-    resize(): any;
+  scroll(scrollPos: number): any;
+  resize(): any;
 }
 export interface RulerProps {
-    type?: "horizontal" | "vertical";
-    width?: number;
-    height?: number;
-    unit?: number;
-    zoom?: number;
-    direction?: "start" | "end";
-    style?: IObject<any>;
-    backgroundColor?: string;
-    lineColor?: string;
-    textColor?: string;
-    textFormat?: (scale: number) => string;
+  type?: "horizontal" | "vertical";
+  width?: number;
+  height?: number;
+  unit?: number;
+  zoom?: number;
+  direction?: "start" | "end";
+  style?: IObject<any>;
+  backgroundColor?: string;
+  lineColor?: string;
+  textColor?: string;
+  textFormat?: (scale: number) => string;
 }
-
-
 ```
 
-
-
 ## ⚙️ Developments
+
 ### `npm run start`
 
 Runs the app in the development mode.<br>
@@ -84,9 +85,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
-
-
 ## ⭐️ Show Your Support
+
 Please give a ⭐️ if this project helped you!
 
 ## 👏 Contributing
@@ -96,7 +96,6 @@ If you have any questions or requests or want to contribute to `ruler` or other 
 ## 🐞 Bug Report
 
 If you find a bug, please report to us opening a new [Issue](https://github.com/daybrush/ruler/issues) on GitHub.
-
 
 ## 📝 License
 

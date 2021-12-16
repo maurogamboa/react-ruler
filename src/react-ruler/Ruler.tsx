@@ -100,6 +100,7 @@ export default class Ruler extends React.PureComponent<RulerProps> implements Ru
         const mainLineSize = convertUnitSize(`${props.mainLineSize || "100%"}`, containerSize);
         const longLineSize = convertUnitSize(`${props.longLineSize || 10}`, containerSize);
         const shortLineSize = convertUnitSize(`${props.shortLineSize || 7}`, containerSize);
+        const middleLineSize = convertUnitSize(`${props.middleLineSize || 15}`, containerSize);
 
         if (backgroundColor === "transparent") {
             // Clear existing paths & text
@@ -130,8 +131,8 @@ export default class Ruler extends React.PureComponent<RulerProps> implements Ru
         const maxRange = Math.ceil((scrollPos * zoom + size) / zoomUnit);
         const length = maxRange - minRange;
         const alignOffset = Math.max(["left", "center", "right"].indexOf(textAlign) - 1, -1);
-
-
+        const drawMiddleLine = segment % 2 === 0; 
+        const middleIndex = Math.floor(segment / 2);
 
         for (let i = 0; i <= length; ++i) {
             const value = i + minRange;
@@ -146,9 +147,14 @@ export default class Ruler extends React.PureComponent<RulerProps> implements Ru
                 if (pos < 0 || pos >= size) {
                     continue;
                 }
-                const lineSize = j === 0
-                    ? mainLineSize
-                    : (j % 2 === 0 ? longLineSize : shortLineSize);
+                let lineSize = 0;
+                if (j === 0) {
+                    lineSize = mainLineSize;
+                } else if (drawMiddleLine && j === middleIndex) {
+                    lineSize = middleLineSize;
+                } else {
+                    lineSize =  (j % 2 === 0 ? longLineSize : shortLineSize);
+                }
 
                 const [x1, y1] = isHorizontal
                     ? [pos, isDirectionStart ? 0 : height - lineSize]
