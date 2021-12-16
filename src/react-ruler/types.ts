@@ -5,8 +5,8 @@ import { IObject } from "@daybrush/utils";
  * @memberof Ruler
  */
 export interface RulerInterface {
-    scroll(scrollPos: number): void;
-    resize(): void;
+  scroll(scrollPos: number): void;
+  resize(): void;
 }
 
 /**
@@ -32,26 +32,28 @@ export interface RulerInterface {
  * @property - ruler's line color (default: "#777777")
  * @property - ruler's text color (default: "#ffffff")
  * @property - ruler's text format
+ * @property - middle line size (default: 15)
  */
 export interface RulerProps {
-    type?: "horizontal" | "vertical";
-    width?: number;
-    height?: number;
-    unit?: number;
-    zoom?: number;
-    direction?: "start" | "end";
-    textAlign?: "left" | "center" | "right";
-    font?: string;
-    segment?: number;
-    mainLineSize?: string | number;
-    longLineSize?: string | number;
-    shortLineSize?: string | number;
-    textOffset?: number[];
-    negativeRuler?: boolean;
-    scrollPos?: number;
-    style?: IObject<any>;
-    backgroundColor?: string;
-    lineColor?: string;
-    textColor?: string;
-    textFormat?: (scale: number) => string;
+  type?: "horizontal" | "vertical";
+  width?: number;
+  height?: number;
+  unit?: number;
+  zoom?: number;
+  direction?: "start" | "end";
+  textAlign?: "left" | "center" | "right";
+  font?: string;
+  segment?: number;
+  mainLineSize?: string | number;
+  longLineSize?: string | number;
+  shortLineSize?: string | number;
+  textOffset?: number[];
+  negativeRuler?: boolean;
+  scrollPos?: number;
+  style?: IObject<any>;
+  backgroundColor?: string;
+  lineColor?: string;
+  textColor?: string;
+  textFormat?: (scale: number) => string;
+  middleLineSize?: string | number;
 }
